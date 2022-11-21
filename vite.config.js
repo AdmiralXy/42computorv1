@@ -15,5 +15,5 @@ export default defineConfig({
       usePolling: true,
     },
   },
-  base: "42computorv1",
+  base: "./",
 });
