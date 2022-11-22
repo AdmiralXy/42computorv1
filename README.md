@@ -14,6 +14,7 @@ Calculator for polynomial equations of the second and lower degrees. Created wit
 
 * Vue 3
 * Vite
+* Vitest
 * Bootstrap 5
 
 ## :ledger:  Features
@@ -70,5 +71,3 @@ $> npm run test:unit
 * Get roots by using the following formula: `x = (-b ± √Δ) / 2a`
 * Solve: `x = (11 ± √49) / 4`
 * Roots: `4.5 and 1`
-
-<br/><br/>
