@@ -2,6 +2,10 @@
 <p align="center">
 Calculator for polynomial equations of the second and lower degrees. Created with Vue 3.
 </p>
+<p align="center">
+    Deployed on
+    <a href="https://admiralxy.github.io/42computorv1/">GitHub Pages</a>
+</p>
 
 <p align="center">
 	<img src="https://img.shields.io/github/repo-size/AdmiralXy/42computorv1?color=%2365c534" alt="" height="20"/>
