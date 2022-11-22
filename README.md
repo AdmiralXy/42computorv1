@@ -1,41 +1,74 @@
-# computorv1
+<h1 align="center">Computor v1</h1>
+<p align="center">
+Calculator for polynomial equations of the second and lower degrees. Created with Vue 3.
+</p>
 
-This template should help get you started developing with Vue 3 in Vite.
+<p align="center">
+	<img src="https://img.shields.io/github/repo-size/AdmiralXy/42computorv1?color=%2365c534" alt="" height="20"/>
+	<img src="https://img.shields.io/github/directory-file-count/AdmiralXy/42computorv1?color=%2365c534" alt="" height="20"/>
+</p>
 
-## Recommended IDE Setup
+<br/>
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## :package:  Technology stack
 
-## Customize configuration
+* Vue 3
+* Vite
+* Bootstrap 5
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+## :ledger:  Features
 
-## Project Setup
+* Unit tests for the parser and the solver
+* Responsive design
+* Calculation of roots for equations of the second degree and below
+* Different types of equation terms
+  * Whole numbers
+  * Decimals
+  * [coefficient]x
+  * [coefficient]X
+  * [coefficient]x^[exponent]
+  * [coefficient]X^[exponent]
+  * [coefficient]*x^[exponent]
+  * [coefficient]*X^[exponent]
+* Equation's solution is displayed in the form of a table
+  * Reduced form
+  * Degree
+  * Discriminant
+  * Roots
+  * Explanation if the equation has no solution
+  * Explanation if the equation has infinite solutions
 
-```sh
-npm install
+## :zap:  Quick start
+
+Make sure you have Node 18 or later installed.
+
+```bash
+-- Clone the repository
+$> git clone https://github.com/AdmiralXy/42computorv1
+
+-- Install dependencies
+$> npm install
+
+-- Start the app
+$> npm run dev
+
+-- Build the app
+$> npm run build
+
+-- Lint the app
+$> npm run lint
+
+-- Run unit tests
+$> npm run test:unit
 ```
 
-### Compile and Hot-Reload for Development
+## :rocket:  Example
 
-```sh
-npm run dev
-```
+* Calculate: `2x^2 - 1x = 10x - 9`
+* Reduced form: `2x^2 - 11x + 9 = 0`
+* Polynomial degree: `2`
+* Get roots by using the following formula: `x = (-b ± √Δ) / 2a`
+* Solve: `x = (11 ± √49) / 4`
+* Roots: `4.5 and 1`
 
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+<br/><br/>
