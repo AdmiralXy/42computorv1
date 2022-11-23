@@ -18,6 +18,10 @@
       <p class="polynomial-solve__step">Root sign:</p>
       <p>{{ solution.sign }}</p>
     </template>
+    <template v-if="solution.explanation">
+      <p class="polynomial-solve__step">Explanation:</p>
+      <p>{{ solution.explanation }}</p>
+    </template>
     <template v-if="solution.roots">
       <p class="polynomial-solve__step">Roots:</p>
       <p
@@ -25,12 +29,11 @@
         :key="`(${root}-${Math.random()})`"
         class="polynomial-solve__root"
       >
-        x = {{ root }}
+        <template v-if="root.isIrrational">
+          x = {{ root.fractional }}
+        </template>
+        <template v-else> x = {{ root.real }} </template>
       </p>
-    </template>
-    <template v-if="solution.explanation">
-      <p class="polynomial-solve__step">Explanation:</p>
-      <p>{{ solution.explanation }}</p>
     </template>
   </div>
 </template>

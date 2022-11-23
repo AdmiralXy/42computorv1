@@ -26,6 +26,8 @@ Calculator for polynomial equations of the second and lower degrees. Created wit
 * Unit tests for the parser and the solver
 * Responsive design
 * Calculation of roots for equations of the second degree and below
+* Answer in the form of fractions and whole numbers
+* Rounding irrational fractions
 * Different types of equation terms
   * Whole numbers
   * Decimals

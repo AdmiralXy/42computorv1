@@ -11,7 +11,9 @@ describe("Equation solver", () => {
     const solution = solveEquation(equation);
     expect(solution).toHaveProperty("roots");
     expect(solution.roots).toHaveLength(1);
-    expect(solution.roots[0]).toBeCloseTo(-60.02, 1);
+    expect(solution.roots[0].real).toBeCloseTo(-60.02, 1);
+    expect(solution.roots[0].fractional).toEqual("-854732998 / 14238803");
+    expect(solution.roots[0].isIrrational).toEqual(true);
   });
   test("first degree with negative number solves correctly", () => {
     const equation = [
@@ -19,17 +21,25 @@ describe("Equation solver", () => {
       { coefficient: 20, exponent: 0 },
     ];
     const solution = solveEquation(equation);
-    expect(solution).toHaveProperty("roots", [5]);
+    expect(solution).toHaveProperty("roots");
+    expect(solution.roots).toHaveLength(1);
+    expect(solution.roots[0].real).toEqual(5);
+    expect(solution.roots[0].fractional).toEqual("5");
+    expect(solution.roots[0].isIrrational).toEqual(false);
   });
   test("first degree without b solves correctly", () => {
     const equation = [{ coefficient: 20, exponent: 1 }];
     const solution = solveEquation(equation);
-    expect(solution).toHaveProperty("roots", [-0]);
+    expect(solution).toHaveProperty("roots");
+    expect(solution.roots).toHaveLength(1);
+    expect(solution.roots[0].real).toEqual(-0);
+    expect(solution.roots[0].fractional).toEqual("0");
+    expect(solution.roots[0].isIrrational).toEqual(false);
   });
   test("no solution shows correctly", () => {
     const equation = [{ coefficient: 0, exponent: 0 }];
     const solution = solveEquation(equation);
-    expect(solution).toHaveProperty("explanation", "There are no solutions");
+    expect(solution).toHaveProperty("explanation", "x ∈ R");
   });
   test("no solution shows correctly with x", () => {
     const equation = [{ coefficient: 0, exponent: 1 }];
@@ -45,7 +55,14 @@ describe("Equation solver", () => {
       { coefficient: -69, exponent: 0 },
     ];
     const solution = solveEquation(equation);
-    expect(solution).toHaveProperty("roots", [23, -3]);
+    expect(solution).toHaveProperty("roots");
+    expect(solution.roots).toHaveLength(2);
+    expect(solution.roots[0].real).toEqual(23);
+    expect(solution.roots[0].fractional).toEqual("46 / 2");
+    expect(solution.roots[0].isIrrational).toEqual(false);
+    expect(solution.roots[1].real).toEqual(-3);
+    expect(solution.roots[1].fractional).toEqual("-6 / 2");
+    expect(solution.roots[1].isIrrational).toEqual(false);
   });
   test("second degree solves with one root solves correctly", () => {
     const equation = [
@@ -54,7 +71,11 @@ describe("Equation solver", () => {
       { coefficient: 1, exponent: 0 },
     ];
     const solution = solveEquation(equation);
-    expect(solution).toHaveProperty("roots", [-1]);
+    expect(solution).toHaveProperty("roots");
+    expect(solution.roots).toHaveLength(1);
+    expect(solution.roots[0].real).toEqual(-1);
+    expect(solution.roots[0].fractional).toEqual("-2 / 2");
+    expect(solution.roots[0].isIrrational).toEqual(false);
   });
   test("second degree without c solves correctly", () => {
     const equation = [
@@ -62,7 +83,14 @@ describe("Equation solver", () => {
       { coefficient: 19, exponent: 1 },
     ];
     const solution = solveEquation(equation);
-    expect(solution).toHaveProperty("roots", [0, -1.9]);
+    expect(solution).toHaveProperty("roots");
+    expect(solution.roots).toHaveLength(2);
+    expect(solution.roots[0].real).toEqual(0);
+    expect(solution.roots[0].fractional).toEqual("0 / 20");
+    expect(solution.roots[0].isIrrational).toEqual(false);
+    expect(solution.roots[1].real).toEqual(-1.9);
+    expect(solution.roots[1].fractional).toEqual("-38 / 20");
+    expect(solution.roots[1].isIrrational).toEqual(true);
   });
   test("second degree without b solves correctly", () => {
     const equation = [
@@ -70,7 +98,34 @@ describe("Equation solver", () => {
       { coefficient: -20, exponent: 0 },
     ];
     const solution = solveEquation(equation);
-    expect(solution).toHaveProperty("roots", [2, -2]);
+    expect(solution).toHaveProperty("roots");
+    expect(solution.roots).toHaveLength(2);
+    expect(solution.roots[0].real).toEqual(2);
+    expect(solution.roots[0].fractional).toEqual("4 / 2");
+    expect(solution.roots[0].isIrrational).toEqual(false);
+    expect(solution.roots[1].real).toEqual(-2);
+    expect(solution.roots[1].fractional).toEqual("-4 / 2");
+    expect(solution.roots[1].isIrrational).toEqual(false);
+  });
+  test("second degree with decimals coefficients solves correctly", () => {
+    const equation = [
+      { coefficient: 82.2545434, exponent: 2 },
+      { coefficient: 26343.3232, exponent: 1 },
+      { coefficient: -2535.25442, exponent: 0 },
+    ];
+    const solution = solveEquation(equation);
+    expect(solution).toHaveProperty("roots");
+    expect(solution.roots).toHaveLength(2);
+    expect(solution.roots[0].real).toBeCloseTo(0.09621, 5);
+    expect(solution.roots[0].fractional).toEqual(
+      "41490661257192 / 431250700500992"
+    );
+    expect(solution.roots[0].isIrrational).toEqual(true);
+    expect(solution.roots[1].real).toBeCloseTo(-320.362, 3);
+    expect(solution.roots[1].fractional).toEqual(
+      "-138156373000073180 / 431250700500992"
+    );
+    expect(solution.roots[1].isIrrational).toEqual(true);
   });
   test("second degree without real roots solves correctly", () => {
     const equation = [

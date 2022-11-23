@@ -51,18 +51,18 @@ describe("Equation simplify", () => {
       { coefficient: 4, exponent: 1 },
     ];
     const result = simplifyEquation(equation);
-    expect(result).toEqual([{ coefficient: 0, exponent: 1 }]);
+    expect(result).toEqual([{ coefficient: 0, exponent: 0 }]);
   });
-  test("simplifies to zero with x and second degree correctly", () => {
+  test("simplifies to zero with x and high degree correctly", () => {
     const equation = [
       { coefficient: -4, exponent: 1 },
-      { coefficient: -25, exponent: 2 },
+      { coefficient: -25, exponent: 12 },
       { coefficient: -15, exponent: 0 },
       { coefficient: 15, exponent: 0 },
       { coefficient: 4, exponent: 1 },
-      { coefficient: 25, exponent: 2 },
+      { coefficient: 25, exponent: 12 },
     ];
     const result = simplifyEquation(equation);
-    expect(result).toEqual([{ coefficient: 0, exponent: 1 }]);
+    expect(result).toEqual([{ coefficient: 0, exponent: 0 }]);
   });
 });
