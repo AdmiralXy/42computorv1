@@ -23,9 +23,10 @@ Calculator for polynomial equations of the second and lower degrees. Created wit
 
 ## :ledger:  Features
 
-* Unit tests for the parser and the solver
 * Responsive design
+* Unit tests for the parser and the solver
 * Calculation of roots for equations of the second degree and below
+* Calculating roots for a negative discriminant
 * Answer in the form of fractions and whole numbers
 * Rounding irrational fractions
 * Different types of equation terms
