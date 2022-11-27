@@ -24,7 +24,7 @@ function solveLinear(equation) {
     } else if (equation[0].coefficient === 0 && equation[0].exponent !== 0) {
       return { explanation: "x ∈ R" };
     } else if (equation[0].coefficient !== 0 && equation[0].exponent === 0) {
-      return { explanation: "Equation is a constant, no solutions" };
+      return { explanation: "Equation is always false" };
     }
   }
 

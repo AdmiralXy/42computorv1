@@ -44,10 +44,7 @@ describe("Equation solver", () => {
   test("no solution with coefficient shows correctly", () => {
     const equation = [{ coefficient: 10, exponent: 0 }];
     const solution = solveEquation(equation);
-    expect(solution).toHaveProperty(
-      "explanation",
-      "Equation is a constant, no solutions"
-    );
+    expect(solution).toHaveProperty("explanation", "Equation is always false");
   });
   test("no solution shows correctly with x", () => {
     const equation = [{ coefficient: 0, exponent: 1 }];
