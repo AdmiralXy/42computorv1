@@ -30,21 +30,37 @@ export default class FtMath {
     return number1 > number2 ? number2 : number1;
   }
 
-  static formatFraction(numerator, denominator) {
-    const result = numerator / denominator;
-    if (!this.isIrrational(result)) {
-      return result.toString();
-    } else if (this.isIrrational(numerator) || this.isIrrational(denominator)) {
-      return result.toFixed(2).toString();
-    }
-    return `${numerator} / ${denominator}`;
-  }
-
   static isIrrational(number) {
     return number % 1 !== 0;
   }
 
-  static formatCoefficients(a, b, c) {
+  static gcd(a, b) {
+    if (b) {
+      return this.gcd(b, a % b);
+    } else {
+      return this.abs(a);
+    }
+  }
+
+  static getDecimalPartLength(number) {
+    const decimalPart = (number + "").split(".")?.[1];
+    return decimalPart ? decimalPart.length : 0;
+  }
+
+  static abs(number) {
+    return number > 0 ? number : -number;
+  }
+
+  static simplifyFraction(numerator, denominator) {
+    const result = numerator / denominator;
+    if (!this.isIrrational(result)) {
+      return result.toString();
+    }
+    const gcd = this.gcd(numerator, denominator);
+    return `${numerator / gcd} / ${denominator / gcd}`;
+  }
+
+  static reduceCoefficients(a, b, c) {
     const aIsIrrational = this.isIrrational(a);
     const bIsIrrational = this.isIrrational(b);
     const cIsIrrational = this.isIrrational(c);
@@ -66,22 +82,5 @@ export default class FtMath {
     }
     let divisor = this.gcd(this.gcd(a, b), c);
     return [a / divisor, b / divisor, c / divisor];
-  }
-
-  static gcd(a, b) {
-    if (b) {
-      return this.gcd(b, a % b);
-    } else {
-      return this.abs(a);
-    }
-  }
-
-  static getDecimalPartLength(number) {
-    const decimalPart = (number + "").split(".")?.[1];
-    return decimalPart ? decimalPart.length : 0;
-  }
-
-  static abs(number) {
-    return number > 0 ? number : -number;
   }
 }
