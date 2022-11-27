@@ -26,7 +26,12 @@ describe("FT Math", () => {
   test("negative sqrt works correctly", () => {
     const number = -100;
     const result = FtMath.sqrt(number);
-    expect(result).toEqual(null);
+    expect(result).toEqual("10i");
+  });
+  test("decimals negative sqrt works correctly", () => {
+    const number = -985.0864412;
+    const result = FtMath.sqrt(number);
+    expect(result).toEqual("31.386086745562913i");
   });
 
   // Tests: FtMath.max

@@ -132,16 +132,40 @@ describe("Equation solver", () => {
     );
     expect(solution.roots[1].isIrrational).toEqual(true);
   });
-  test("second degree without real roots solves correctly", () => {
+  test("second degree with complex roots solves correctly", () => {
     const equation = [
       { coefficient: 5, exponent: 2 },
       { coefficient: 50, exponent: 0 },
     ];
     const solution = solveEquation(equation);
-    expect(solution).toHaveProperty(
-      "explanation",
-      "Discriminant Δ is negative, there are no solutions in real numbers"
+    expect(solution).toHaveProperty("roots");
+    expect(solution.roots).toHaveLength(2);
+    expect(solution.roots[0].fractional).toEqual(
+      "(0 + 6.324555320336758i) / 2"
     );
+    expect(solution.roots[0].isIrrational).toEqual(true);
+    expect(solution.roots[1].fractional).toEqual(
+      "(0 - 6.324555320336758i) / 2"
+    );
+    expect(solution.roots[1].isIrrational).toEqual(true);
+  });
+  test("second degree with decimals and complex roots solves correctly", () => {
+    const equation = [
+      { coefficient: 9.17, exponent: 2 },
+      { coefficient: -35.692123, exponent: 1 },
+      { coefficient: 90.9393, exponent: 0 },
+    ];
+    const solution = solveEquation(equation);
+    expect(solution).toHaveProperty("roots");
+    expect(solution.roots).toHaveLength(2);
+    expect(solution.roots[0].fractional).toEqual(
+      "(35692123 + 45406231.728176594i) / 18340000"
+    );
+    expect(solution.roots[0].isIrrational).toEqual(true);
+    expect(solution.roots[1].fractional).toEqual(
+      "(35692123 - 45406231.728176594i) / 18340000"
+    );
+    expect(solution.roots[1].isIrrational).toEqual(true);
   });
 
   // Tests: special cases

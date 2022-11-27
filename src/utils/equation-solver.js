@@ -57,9 +57,22 @@ function solveQuadratic(equation) {
   let delta = b ** 2 - 4 * a * c;
 
   if (delta < 0) {
+    const bFormatted = b > 0 ? `-${b}` : b * -1;
     return {
+      formula: "x = -b ± √(b² - 4ac) / 2a",
+      formulaApplied: `x = ${bFormatted} ± √(${b}² - 4 * ${a} * ${c}) / 2 * ${a}`,
+      roots: [
+        {
+          fractional: `(${-b} + ${FtMath.sqrt(delta)}) / ${2 * a}`,
+          isIrrational: true,
+        },
+        {
+          fractional: `(${-b} - ${FtMath.sqrt(delta)}) / ${2 * a}`,
+          isIrrational: true,
+        },
+      ],
       explanation:
-        "Discriminant Δ is negative, there are no solutions in real numbers",
+        "The discriminant Δ is negative, there are solutions in complex numbers",
     };
   }
 

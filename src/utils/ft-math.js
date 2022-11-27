@@ -1,7 +1,7 @@
 export default class FtMath {
   static sqrt(number) {
     if (number < 0) {
-      return null;
+      return this.sqrt(this.abs(number)) + "i";
     } else if (number === 0) {
       return 0;
     }
