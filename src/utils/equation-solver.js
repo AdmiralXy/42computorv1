@@ -18,10 +18,14 @@ export default function solveEquation(equation) {
 }
 
 function solveLinear(equation) {
-  if (equation.length === 1 && equation[0].coefficient === 0) {
-    return {
-      explanation: "x ∈ R",
-    };
+  if (equation.length === 1) {
+    if (equation[0].coefficient === 0 && equation[0].exponent === 0) {
+      return { explanation: "Equation is always true" };
+    } else if (equation[0].coefficient === 0 && equation[0].exponent !== 0) {
+      return { explanation: "x ∈ R" };
+    } else if (equation[0].coefficient !== 0 && equation[0].exponent === 0) {
+      return { explanation: "Equation is a constant, no solutions" };
+    }
   }
 
   const a = equation.find((term) => term.exponent === 1)?.coefficient ?? 0;
@@ -36,7 +40,7 @@ function solveLinear(equation) {
       {
         real: x,
         formulaApplied: `x = ${bFormatted} / ${a}`,
-        fractional: FtMath.formatFraction(-b, a),
+        fractional: FtMath.simplifyFraction(-b, a),
         isIrrational: x % 1 !== 0,
       },
     ],
@@ -48,7 +52,7 @@ function solveQuadratic(equation) {
   let b = equation.find((term) => term.exponent === 1)?.coefficient ?? 0;
   let c = equation.find((term) => term.exponent === 0)?.coefficient ?? 0;
 
-  [a, b, c] = FtMath.formatCoefficients(a, b, c);
+  [a, b, c] = FtMath.reduceCoefficients(a, b, c);
 
   let delta = b ** 2 - 4 * a * c;
 

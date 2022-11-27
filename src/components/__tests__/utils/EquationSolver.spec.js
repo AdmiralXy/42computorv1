@@ -39,7 +39,15 @@ describe("Equation solver", () => {
   test("no solution shows correctly", () => {
     const equation = [{ coefficient: 0, exponent: 0 }];
     const solution = solveEquation(equation);
-    expect(solution).toHaveProperty("explanation", "x ∈ R");
+    expect(solution).toHaveProperty("explanation", "Equation is always true");
+  });
+  test("no solution with coefficient shows correctly", () => {
+    const equation = [{ coefficient: 10, exponent: 0 }];
+    const solution = solveEquation(equation);
+    expect(solution).toHaveProperty(
+      "explanation",
+      "Equation is a constant, no solutions"
+    );
   });
   test("no solution shows correctly with x", () => {
     const equation = [{ coefficient: 0, exponent: 1 }];
@@ -136,6 +144,16 @@ describe("Equation solver", () => {
     expect(solution).toHaveProperty(
       "explanation",
       "Discriminant Δ is negative, there are no solutions in real numbers"
+    );
+  });
+
+  // Tests: special cases
+  test("unsupported shows correctly with degree greater than 2", () => {
+    const equation = [{ coefficient: 0, exponent: 31 }];
+    const solution = solveEquation(equation);
+    expect(solution).toHaveProperty(
+      "explanation",
+      "Degree is greater than 2, not supported"
     );
   });
 });

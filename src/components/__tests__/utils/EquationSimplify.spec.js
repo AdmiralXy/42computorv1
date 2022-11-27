@@ -51,7 +51,7 @@ describe("Equation simplify", () => {
       { coefficient: 4, exponent: 1 },
     ];
     const result = simplifyEquation(equation);
-    expect(result).toEqual([{ coefficient: 0, exponent: 0 }]);
+    expect(result).toEqual([{ coefficient: 0, exponent: 1 }]);
   });
   test("simplifies to zero with x and high degree correctly", () => {
     const equation = [
@@ -63,6 +63,6 @@ describe("Equation simplify", () => {
       { coefficient: 25, exponent: 12 },
     ];
     const result = simplifyEquation(equation);
-    expect(result).toEqual([{ coefficient: 0, exponent: 0 }]);
+    expect(result).toEqual([{ coefficient: 0, exponent: 1 }]);
   });
 });

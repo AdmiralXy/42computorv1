@@ -1,5 +1,6 @@
 export default function simplifyEquation(equation) {
   let simplifiedEquation = [];
+  let isZeroDegree = !equation.find((term) => term.exponent > 0);
 
   while (equation.length > 0) {
     const termsWithSamePower = equation.filter(
@@ -25,7 +26,11 @@ export default function simplifyEquation(equation) {
   );
 
   if (simplifiedEquation.length === 0) {
-    return [{ coefficient: 0, exponent: 0 }];
+    if (isZeroDegree) {
+      return [{ coefficient: 0, exponent: 0 }];
+    } else {
+      return [{ coefficient: 0, exponent: 1 }];
+    }
   }
 
   return simplifiedEquation.sort((a, b) => {
