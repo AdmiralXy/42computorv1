@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Enter polynomial equation</h1>
-    <p class="lead">in the form of ax^2 + bx + c = 0</p>
+    <p class="description lead">in the form of ax^2 + bx + c = 0</p>
     <div class="polynomial-solver">
       <input
         type="text"
@@ -78,6 +78,10 @@ export default {
 </script>
 
 <style lang="css" scoped>
+.description {
+  font-size: calc(0.7rem + 0.7vw);
+}
+
 .btn:disabled {
   background-color: #ccc;
   border-color: #ccc;

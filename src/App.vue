@@ -6,7 +6,9 @@ import PolynomialSolver from "./components/PolynomialInput.vue";
   <header class="mb-auto">
     <div>
       <h3 class="float-md-start mb-0">computorv1</h3>
-      <nav class="nav nav-masthead justify-content-center float-md-end">
+      <nav
+        class="nav nav-masthead justify-content-center float-md-end py-4 py-md-0"
+      >
         <a class="nav-link active" aria-current="page" href="/">Home</a>
         <a
           class="nav-link"

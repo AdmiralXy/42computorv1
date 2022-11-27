@@ -74,6 +74,8 @@ export default {
   border-radius: 0.5rem;
   margin: 2rem 0;
   text-align: left;
+  max-height: 32vh;
+  overflow-y: auto;
 }
 
 .polynomial-solve__step {
